@@ -34,7 +34,7 @@ You now have two options:
 #### 2a Image from Docker Hub
 
 ```shell
-sudo docker pull starwarsfan/fli4l-buildroot
+sudo docker pull starwarsfan/fli4l-buildroot-container
 ```
 
 #### 2b Build from scratch
@@ -49,13 +49,13 @@ cd fli4l-buildroot-container
 ##### Build image
 
 ```shell
-sudo docker build -t starwarsfan/fli4l-buildroot:latest .
+sudo docker build -t starwarsfan/fli4l-buildroot-container:latest .
 ```
 
 ### 3. Starting docker container
 
 ```shell
-sudo docker run --name fli4l-buildroot -d starwarsfan/fli4l-buildroot:latest
+sudo docker run --name fli4l-buildroot-container -d starwarsfan/fli4l-buildroot-container:latest
 ```
 
 #### 3.a Mount volume or folder for svn checkout
@@ -64,7 +64,7 @@ With the additional run parameter _-v <host-folder>:/opt/svn-checkout/_ you can 
 host which contains the the svn checkout outside of the container. So the run command may look like the following example:
 
 ```shell
-sudo docker run --name fli4l-buildroot -v /data/svn-checkout/:/opt/svn-checkout/ ...
+sudo docker run --name fli4l-buildroot-container -v /data/svn-checkout/:/opt/svn-checkout/ ...
 ```
 
 ### 5. Useful commands
@@ -78,23 +78,23 @@ sudo docker ps -a
 Stop the container
 
 ```shell
-sudo docker stop fli4l-buildroot
+sudo docker stop fli4l-buildroot-container
 ```
 
 Start the container
 
 ```shell
-sudo docker start fli4l-buildroot
+sudo docker start fli4l-buildroot-container
 ```
 
 Get logs from container
 
 ```shell
-sudo docker logs -f fli4l-buildroot
+sudo docker logs -f fli4l-buildroot-container
 ```
 
 Open cmdline inside of container
 
 ```shell
-sudo docker exec -i -t fli4l-buildroot /bin/bash
+sudo docker exec -i -t fli4l-buildroot-container /bin/bash
 ```
