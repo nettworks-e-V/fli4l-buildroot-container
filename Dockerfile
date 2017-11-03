@@ -12,3 +12,14 @@ ENV SVN_ACCOUNT=${SVN_ACCOUNT} \
 
 # Mount point for Edomi backups
 VOLUME ${SVN_CHECKOUT_DIR}
+
+RUN pacman -Syyu --noconfirm \
+    make \
+    gcc \
+    patch \
+    cpio \
+    python \
+    unzip \
+    rsync \
+    bc \
+    wget
