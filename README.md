@@ -1,12 +1,15 @@
 ## Docker container with fli4l Buildroot
  
- This is a docker implementation of all required tools to build fli4l from scratch.
+ This is a docker implementation of all required tools to build fli4l from 
+ scratch.
 
- For more information please refer to [Official website](http://www.fli4l.de/) or [Support forum](https://forum.nettworks.org)
+ For more information please refer to [Official website](http://www.fli4l.de/)
+ or [Support forum](https://forum.nettworks.org)
 
 ### 1. Install docker
 
- This instruction works for a <b>Centos7</b> docker host. Other distributions may need some adjustments.
+ This instruction works for a <b>Centos7</b> docker host. Other distributions 
+ may need some adjustments.
 
 ```shell
 sudo tee /etc/yum.repos.d/docker.repo <<-'EOF'
@@ -55,16 +58,22 @@ sudo docker build -t starwarsfan/fli4l-buildroot-container:latest .
 ### 3. Starting docker container
 
 ```shell
-sudo docker run --name fli4l-buildroot-container -d starwarsfan/fli4l-buildroot-container:latest
+sudo docker run \
+    --name fli4l-buildroot-container \
+    -d \
+    starwarsfan/fli4l-buildroot-container:latest
 ```
 
 #### 3.a Mount volume or folder for svn checkout
 
-With the additional run parameter _-v <host-folder>:/opt/svn-checkout/_ you can mount a folder on the docker 
-host which contains the the svn checkout outside of the container. So the run command may look like the following example:
+With the additional run parameter _-v <host-folder>:/data/work/_ you can mount 
+a folder on the docker host which contains the the svn checkout outside of the
+container. So the run command may look like the following example:
 
 ```shell
-sudo docker run --name fli4l-buildroot-container -v /data/svn-checkout/:/opt/svn-checkout/ ...
+sudo docker run \
+    --name fli4l-buildroot-container \
+    -v /data/svn-checkout/:/data/work/ ...
 ```
 
 ### 5. Useful commands
