@@ -1,4 +1,4 @@
-FROM base/archlinux:2017.10.01
+FROM archimg/base-devel:2017.11.01
 MAINTAINER Yves Schumann <yves@eisfair.org>
 
 # Define build arguments
@@ -13,19 +13,7 @@ ENV SVN_ACCOUNT=${SVN_ACCOUNT} \
 # Mount point for Edomi backups
 VOLUME ${SVN_CHECKOUT_DIR}
 
-RUN gpg --keyserver keys.gnupg.net --recv-keys 702353E0F7E48EDB \
- && pacman -Syyu --noconfirm \
-    base-devel
-#    make \
-#    gcc \
-#    patch \
-#    cpio \
-#    python \
-#    unzip \
-#    rsync \
-#    bc \
-#    wget \
-#    git \
-#    subversion \
-#    elfutils
-
+RUN pacman -Syu --noconfirm \
+    git \
+    subversion \
+    elfutils
