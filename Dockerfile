@@ -1,4 +1,4 @@
-FROM archimg/base-devel:2017.11.01
+FROM debian:stretch
 MAINTAINER Yves Schumann <yves@eisfair.org>
 
 # Define build arguments
@@ -13,7 +13,28 @@ ENV SVN_ACCOUNT=${SVN_ACCOUNT} \
 # Mount point for Edomi backups
 VOLUME ${SVN_CHECKOUT_DIR}
 
-RUN pacman -Syu --noconfirm \
+RUN apt-get update -y
+RUN apt-get upgrade -y
+RUN apt-get install -y \
+    locales \
+    mc \
     git \
     subversion \
-    elfutils
+    elfutils \
+    make \
+    binutils \
+    build-essential \
+    cpio \
+    python \
+    bc \
+    wget \
+    libncurses5-dev
+
+# Set locale to UTF8
+ENV DEBIAN_FRONTEND noninteractive
+RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
+ && locale-gen en_US.UTF-8 \
+ && dpkg-reconfigure locales \
+ && /usr/sbin/update-locale LANG=en_US.UTF-8
+
+ENV LC_ALL en_US.UTF-8
