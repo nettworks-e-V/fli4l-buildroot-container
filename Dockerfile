@@ -6,6 +6,7 @@ ENV WORK_DIR=/data/work \
     DEBIAN_FRONTEND=noninteractive
 
 # Mount point for Edomi backups
+RUN mkdir -p ${WORK_DIR}
 VOLUME ${WORK_DIR}
 
 RUN apt-get update -y \
