@@ -3,11 +3,16 @@ MAINTAINER Yves Schumann <yves@eisfair.org>
 
 # Define environment vars
 ENV WORK_DIR=/data/work \
+    SHARED_DIR=/data/shared/fli4l \
     DEBIAN_FRONTEND=noninteractive
 
-# Mount point for Edomi backups
+# Mount point for development workspace
 RUN mkdir -p ${WORK_DIR}
 VOLUME ${WORK_DIR}
+
+# Mount point for shared resources like source archives etc
+RUN mkdir -p ${SHARED_DIR}
+VOLUME ${SHARED_DIR}
 
 RUN apt-get update -y \
  && apt-get upgrade -y
