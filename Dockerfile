@@ -29,7 +29,8 @@ RUN apt-get install -y \
     python \
     bc \
     wget \
-    libncurses5-dev
+    libncurses5-dev \
+    uuid-dev
 
 # Set locale to UTF8
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
