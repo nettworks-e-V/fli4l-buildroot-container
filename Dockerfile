@@ -16,7 +16,7 @@ VOLUME ${SHARED_DIR}
 
 RUN apt-get update -y \
  && apt-get upgrade -y
-RUN apt-get install -y \
+RUN apt-get install -y --no-install-recommends \
     locales \
     mc \
     git \
@@ -30,7 +30,8 @@ RUN apt-get install -y \
     bc \
     wget \
     libncurses5-dev \
-    uuid-dev
+    uuid-dev \
+    sysvinit-core
 
 # Set locale to UTF8
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
