@@ -32,7 +32,8 @@ RUN apt-get install -y --no-install-recommends \
     libncurses5-dev \
     uuid-dev \
     man-db \
-    bsdmainutils
+    bsdmainutils \
+    file
 
 # Set locale to UTF8
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
