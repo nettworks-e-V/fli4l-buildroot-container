@@ -41,7 +41,7 @@ RUN apt-get install -y --no-install-recommends \
     openssh-client \
     gcc-multilib \
     g++-multilib \
-    libc6-dev:i386
+    libc6-dev-i386
 
 
 # Set locale to UTF8
