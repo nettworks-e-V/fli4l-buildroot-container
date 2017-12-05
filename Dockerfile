@@ -38,7 +38,8 @@ RUN apt-get install -y --no-install-recommends \
     rsync \
     procps \
     kmod \
-    openssh-client
+    openssh-client \
+    gcc-multilib
 
 
 # Set locale to UTF8
