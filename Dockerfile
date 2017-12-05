@@ -39,7 +39,9 @@ RUN apt-get install -y --no-install-recommends \
     procps \
     kmod \
     openssh-client \
-    gcc-multilib
+    gcc-multilib \
+    g++-multilib \
+    libc6-dev:i386
 
 
 # Set locale to UTF8
