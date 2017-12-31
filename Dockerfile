@@ -1,6 +1,12 @@
 FROM debian:stretch
 MAINTAINER Yves Schumann <yves@eisfair.org>
 
+# Define build arguments
+ARG DEVELOP_USER=developer
+ARG DEVELOP_PASS=developer
+ARG UID="1011"
+ARG GID="1011"
+
 # Define environment vars
 ENV WORK_DIR=/data/work \
     SHARED_DIR=/data/shared/fli4l \
@@ -14,8 +20,18 @@ VOLUME ${WORK_DIR}
 RUN mkdir -p ${SHARED_DIR}
 VOLUME ${SHARED_DIR}
 
+# Setup develop account
+# Create working directory
+# Change user UID and GID
+RUN groupadd --gid ${GID} ${DEVELOP_USER} \
+ && useradd --create-home --home-dir /home/${DEVELOP_USER} --shell /bin/bash --uid ${UID} --gid ${GID} ${DEVELOP_USER} \
+ && echo "${DEVELOP_USER}:${DEVELOP_USER}" | chpasswd \
+ && chown ${DEVELOP_USER}:${DEVELOP_USER} /home/${DEVELOP_USER} -R \
+ && ulimit -v unlimited
+
 RUN apt-get update -y \
  && apt-get upgrade -y
+
 RUN apt-get install -y --no-install-recommends \
     locales \
     mc \
@@ -41,7 +57,8 @@ RUN apt-get install -y --no-install-recommends \
     openssh-client \
     gcc-multilib \
     g++-multilib \
-    libc6-dev-i386
+    libc6-dev-i386 \
+    ca-certificates
 
 # Set PERL_USE_UNSAFE_INC to make Debian 9 latex2html work
 ENV PERL_USE_UNSAFE_INC 1
