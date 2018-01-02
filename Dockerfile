@@ -58,7 +58,9 @@ RUN apt-get install -y --no-install-recommends \
     gcc-multilib \
     g++-multilib \
     libc6-dev-i386 \
-    ca-certificates
+    ca-certificates \
+    flex \
+    bison
 
 # Set PERL_USE_UNSAFE_INC to make Debian 9 latex2html work
 ENV PERL_USE_UNSAFE_INC 1
