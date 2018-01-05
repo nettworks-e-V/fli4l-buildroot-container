@@ -70,3 +70,11 @@ RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
  && /usr/sbin/update-locale LANG=en_US.UTF-8
 
 ENV LC_ALL en_US.UTF-8
+
+# Set timezone to Europe/Berlin
+ENV TZ 'Europe/Berlin'
+RUN echo $TZ > /etc/timezone && \
+    rm /etc/localtime && \
+    ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
+    dpkg-reconfigure -f noninteractive tzdata
+
