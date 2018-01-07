@@ -8,9 +8,14 @@ ARG UID="1011"
 ARG GID="1011"
 
 # Define environment vars
+# Set PERL_USE_UNSAFE_INC to make Debian 9 latex2html work
+
 ENV WORK_DIR=/data/work \
     SHARED_DIR=/data/shared/fli4l \
     DEBIAN_FRONTEND=noninteractive
+    PERL_USE_UNSAFE_INC 1
+    LC_ALL en_US.UTF-8
+    TZ 'Europe/Berlin'
 
 # Mount point for development workspace
 RUN mkdir -p ${WORK_DIR}
@@ -60,19 +65,13 @@ RUN apt-get install -y --no-install-recommends \
     libc6-dev-i386 \
     ca-certificates
 
-# Set PERL_USE_UNSAFE_INC to make Debian 9 latex2html work
-ENV PERL_USE_UNSAFE_INC 1
-
 # Set locale to UTF8
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
  && locale-gen en_US.UTF-8 \
  && dpkg-reconfigure locales \
  && /usr/sbin/update-locale LANG=en_US.UTF-8
 
-ENV LC_ALL en_US.UTF-8
-
 # Set timezone to Europe/Berlin
-ENV TZ 'Europe/Berlin'
 RUN echo $TZ > /etc/timezone && \
     rm /etc/localtime && \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
