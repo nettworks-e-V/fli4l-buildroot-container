@@ -13,7 +13,7 @@ ARG GID="1011"
 ENV WORK_DIR=/data/work \
     SHARED_DIR=/data/shared/fli4l \
     DEBIAN_FRONTEND=noninteractive \
-    PERL_USE_UNSAFE_INC 1 \
+    PERL_USE_UNSAFE_INC=1 \
     LC_ALL=en_US.UTF-8 \
     TZ='Europe/Berlin'
 
