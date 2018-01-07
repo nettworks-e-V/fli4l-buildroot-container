@@ -14,8 +14,8 @@ ENV WORK_DIR=/data/work \
     SHARED_DIR=/data/shared/fli4l \
     DEBIAN_FRONTEND=noninteractive \
     PERL_USE_UNSAFE_INC 1 \
-    LC_ALL en_US.UTF-8 \
-    TZ 'Europe/Berlin'
+    LC_ALL=en_US.UTF-8 \
+    TZ='Europe/Berlin'
 
 # Mount point for development workspace
 RUN mkdir -p ${WORK_DIR}
