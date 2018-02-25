@@ -1,12 +1,6 @@
 FROM debian:stretch
 MAINTAINER Yves Schumann <yves@eisfair.org>
 
-# Define build arguments
-ARG DEVELOP_USER=developer
-ARG DEVELOP_PASS=developer
-ARG UID="1011"
-ARG GID="1011"
-
 # Define environment vars
 # Set PERL_USE_UNSAFE_INC to make Debian 9 latex2html work
 
@@ -24,15 +18,6 @@ VOLUME ${WORK_DIR}
 # Mount point for shared resources like source archives etc
 RUN mkdir -p ${SHARED_DIR}
 VOLUME ${SHARED_DIR}
-
-# Setup develop account
-# Create working directory
-# Change user UID and GID
-RUN groupadd --gid ${GID} ${DEVELOP_USER} \
- && useradd --create-home --home-dir /home/${DEVELOP_USER} --shell /bin/bash --uid ${UID} --gid ${GID} ${DEVELOP_USER} \
- && echo "${DEVELOP_USER}:${DEVELOP_USER}" | chpasswd \
- && chown ${DEVELOP_USER}:${DEVELOP_USER} /home/${DEVELOP_USER} -R \
- && ulimit -v unlimited
 
 RUN apt-get update -y \
  && apt-get upgrade -y
