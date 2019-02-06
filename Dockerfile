@@ -63,7 +63,8 @@ RUN apt-get install -y --no-install-recommends \
     gcc-multilib \
     g++-multilib \
     libc6-dev-i386 \
-    ca-certificates
+    ca-certificates \
+    libelf-dev
 
 # Set locale to UTF8
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
