@@ -49,7 +49,8 @@ RUN apt-get install -y --no-install-recommends \
     g++-multilib \
     libc6-dev-i386 \
     ca-certificates \
-    libelf-dev
+    libelf-dev \
+    bison
 
 # Set locale to UTF8
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
