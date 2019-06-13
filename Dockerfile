@@ -50,7 +50,8 @@ RUN apt-get install -y --no-install-recommends \
     libc6-dev-i386 \
     ca-certificates \
     libelf-dev \
-    bison
+    bison \
+    flex
 
 # Set locale to UTF8
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
