@@ -20,39 +20,42 @@ RUN mkdir -p ${SHARED_DIR}
 VOLUME ${SHARED_DIR}
 
 RUN apt-get update -y \
- && apt-get upgrade -y
+ && apt-get upgrade -y \
+ && apt autoclean
 
 RUN apt-get install -y --no-install-recommends \
-    locales \
-    mc \
-    git \
-    subversion \
-    elfutils \
-    make \
-    binutils \
-    build-essential \
-    cpio \
-    python \
     bc \
-    wget \
-    libncurses5-dev \
-    uuid-dev \
-    man-db \
+    binutils \
+    bison \
     bsdmainutils \
+    build-essential \
+    ca-certificates \
+    cpio \
+    elfutils \
     file \
-    unzip \
-    rsync \
-    procps \
-    kmod \
-    openssh-client \
+    flex \
     gcc-multilib \
     g++-multilib \
+    git \
+    kmod \
+    libncurses5-dev \
     libc6-dev-i386 \
-    ca-certificates \
     libelf-dev \
-    bison \
-    flex \
-    libssl-dev
+    libssl-dev \
+    locales \
+    make \
+    man-db \
+    mc \
+    openssh-client \
+    procps \
+    python \
+    rsync \
+    subversion \
+    unzip \
+    uuid-dev \
+    wget \
+ && apt autoclean
+
 
 # Set locale to UTF8
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
