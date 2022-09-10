@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM debian:11-slim
 MAINTAINER Yves Schumann <yves@eisfair.org>
 
 # Define environment vars
